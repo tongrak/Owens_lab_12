@@ -17,3 +17,23 @@ int main(){
     cout << "\nMin = " << B[5];
     return 0;
 }
+
+void stat(const double A[],int n, double B[]){
+    double sum=0,sqsum=0, amean, multi=1, recip=0, max, min;
+    min = max = A[0];
+    for(int i=0;i<n;i++){
+        sum+=A[i];
+        sqsum+=A[i]*A[i];
+        multi*=A[i];
+        recip+=1/A[i];
+        if(A[i]<min)min=A[i];
+        if(A[i]>max)max=A[i];
+    }
+    amean = sum/n;
+    B[0]=amean;
+    B[1]=sqrt((sqsum/n)-pow(amean,2));
+    B[2]=pow(multi,(1.0/n));
+    B[3]=n/recip;
+    B[4]=max;
+    B[5]=min;
+}
